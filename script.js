@@ -1,45 +1,46 @@
-//your JS code here. If required.
-
 let player1 = "";
-let player2 ="";
+let player2 = "";
 let currentPlayer = "";
 let currentSymbol = "X";
-let board = ["","","","","","","",""];
+let board = ["","","","","","","","",""];
 let gameActive = true;
 
-document.getElementById("submit").addEventListener("click",()=>{
-	 player1 = document.getElementById("player1").value;
-	 player2 = document.getElementById("player2").value;
+document.getElementById("submit").addEventListener("click", (e) => {
+  e.preventDefault(); // 🔑 IMPORTANT
 
-	if(!player1 || !player2){
-		return;
-	}
+  player1 = document.getElementById("player1").value;
+  player2 = document.getElementById("player2").value;
 
-	currentPlayer = player1;
-	currentSymbol = "X";
+  if (!player1 || !player2) return;
 
-	renderGame();
+  currentPlayer = player1;
+  currentSymbol = "X";
+
+  renderGame();
 });
 
-function renderGame(){
-	const container = document.getElementById("container");
-	container.innerHTML = `
-	<h1>Tic Tac Toe</h1>
-	<h3 class="message">${currentPlayer}, you're up</h3>
-	<div class="board" id="board"> </div>
-	`;
+function renderGame() {
+  board = ["","","","","","","","",""];
+  gameActive = true;
 
-	const boardDiv = document.getElementById("board");
+  const container = document.getElementById("container");
+  container.innerHTML = `
+    <h1>Tic Tac Toe</h1>
+    <h3 class="message">${currentPlayer}, you're up</h3>
+    <div class="board" id="board"></div>
+  `;
 
-	for(let i=0;i<9;i++){
-		const cell = document.createElement("div");
-		cell.classList.add("cell");
-		cell.id = i;
-cell.addEventListener("click", handleClick);
-		boardDiv.appendChild(cell);
-	}
-	
+  const boardDiv = document.getElementById("board");
+
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.id = i;
+    cell.addEventListener("click", handleClick);
+    boardDiv.appendChild(cell);
+  }
 }
+
 function handleClick(e) {
   const index = e.target.id;
 
@@ -55,7 +56,6 @@ function handleClick(e) {
     return;
   }
 
-  // switch turn
   if (currentSymbol === "X") {
     currentSymbol = "O";
     currentPlayer = player2;
@@ -70,9 +70,9 @@ function handleClick(e) {
 
 function checkWin() {
   const wins = [
-    [0,1,2], [3,4,5], [6,7,8], // rows
-    [0,3,6], [1,4,7], [2,5,8], // cols
-    [0,4,8], [2,4,6]           // diagonals
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
   ];
 
   for (let combo of wins) {
@@ -85,13 +85,8 @@ function checkWin() {
   return false;
 }
 
-
 function highlightWin(combo) {
-  combo.forEach(index => {
-    document.getElementById(index).classList.add("win");
+  combo.forEach(i => {
+    document.getElementById(i).classList.add("win");
   });
 }
-
-
-
-

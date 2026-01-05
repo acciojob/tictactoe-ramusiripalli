@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-	<title>Tic Tac Toe</title>
-	<style>
-		.container{
-			text-align: center;
-		}
-		.board{
-			display:grid;
-			grid-template-columns: repeat(3, 100px);
-			gap: 5px;
-			margin : 20px auto;
-			align-content:center;
-		}
-		.cell {
+  <meta charset="UTF-8" />
+  <title>Tic Tac Toe</title>
+
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 5px;
+      margin: 20px auto;
+      justify-content: center;
+    }
+
+    .cell {
       width: 100px;
       height: 100px;
       background: pink;
@@ -26,32 +28,36 @@
       justify-content: center;
       cursor: pointer;
     }
+
     .win {
       background: purple;
       color: white;
     }
-    .hidden { display: none; }
-	</style>
+
+    .message {
+      font-size: 18px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-	
-	<div class="container" id="container">
-		<h1>TIC TAC TOE</h1>
-		<form method="post" action="" >
-			
-		
-		<label for="player1">Player 1</label>
-		<input id="player1" placeholder="enter name" name="player-1"> <br/><br>
-		<label for="player2">Player 2</label>
-		<input id="player2" placeholder="enter name" name="player-2"><br><br>
-		<input  type="submit" value="Start Game" id="submit">
-			</form>
-	</div>
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div class="container" id="container">
+    <h1>TIC TAC TOE</h1>
 
+    <!-- Player Inputs -->
+    <label for="player1">Player 1</label><br />
+    <input id="player1" type="text" placeholder="enter name" /><br /><br />
+
+    <label for="player2">Player 2</label><br />
+    <input id="player2" type="text" placeholder="enter name" /><br /><br />
+
+    <!-- Start Button -->
+    <button id="submit">Start Game</button>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="./script.js"></script>
 </body>
-
 </html>
