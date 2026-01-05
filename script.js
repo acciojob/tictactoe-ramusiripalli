@@ -40,3 +40,58 @@ cell.addEventListener("click", handleClick);
 	}
 	
 }
+function handleClick(e) {
+  const index = e.target.id;
+
+  if (board[index] || !gameActive) return;
+
+  board[index] = currentSymbol;
+  e.target.textContent = currentSymbol;
+
+  if (checkWin()) {
+    document.querySelector(".message").textContent =
+      `${currentPlayer}, congratulations you won!`;
+    gameActive = false;
+    return;
+  }
+
+  // switch turn
+  if (currentSymbol === "X") {
+    currentSymbol = "O";
+    currentPlayer = player2;
+  } else {
+    currentSymbol = "X";
+    currentPlayer = player1;
+  }
+
+  document.querySelector(".message").textContent =
+    `${currentPlayer}, you're up`;
+}
+
+function checkWin() {
+  const wins = [
+    [0,1,2], [3,4,5], [6,7,8], // rows
+    [0,3,6], [1,4,7], [2,5,8], // cols
+    [0,4,8], [2,4,6]           // diagonals
+  ];
+
+  for (let combo of wins) {
+    const [a,b,c] = combo;
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      highlightWin(combo);
+      return true;
+    }
+  }
+  return false;
+}
+
+
+function highlightWin(combo) {
+  combo.forEach(index => {
+    document.getElementById(index).classList.add("win");
+  });
+}
+
+
+
+
