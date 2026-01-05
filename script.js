@@ -24,7 +24,7 @@ document.getElementById("submit").addEventListener("click",()=>{
 function renderGame(){
 	const container = document.getElementById("container");
 	container.innerHTML = `
-	<h1>TIC TAC TOE</h1>
+	<h1>Tic Tac Toe</h1>
 	<h3 class="message">${currentPlayer}, you're up</h3>
 	<div class="board" id="board"> </div>
 	`;
