@@ -27,5 +27,16 @@ function renderGame(){
 	<h1>TIC TAC TOE</h1>
 	<h3 class="message">${currentPlayer}, you're up</h3>
 	<div class="board" id="board"> </div>
-	`
+	`;
+
+	const boardDiv = document.getElementById("board");
+
+	for(let i=0;i<9;i++){
+		const cell = document.createElement("div");
+		cell.classList.add("cell");
+		cell.id = i;
+cell.addEventListener("click", handleClick);
+		boardDiv.appendChild(cell);
+	}
+	
 }
