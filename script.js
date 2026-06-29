@@ -32,7 +32,7 @@ function renderGame() {
 
   const boardDiv = document.getElementById("board");
 
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 0; i <= 8; i++) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     cell.id = i;
@@ -70,9 +70,9 @@ function handleClick(e) {
 
 function checkWin() {
   const wins = [
-    [1,2,3],[4,5,6],[7,8,9],
-    [1,4,7],[2,5,8],[3,6,9],
-    [1,5,9],[3,5,7]
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
   ];
 
   for (let combo of wins) {
