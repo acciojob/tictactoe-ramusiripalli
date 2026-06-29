@@ -51,7 +51,7 @@ function handleClick(e) {
 
   if (checkWin()) {
     document.querySelector(".message").textContent =
-      `${currentPlayer} congratulations you won!`;
+      `${currentPlayer}, congratulations you won!`;
     gameActive = false;
     return;
   }
